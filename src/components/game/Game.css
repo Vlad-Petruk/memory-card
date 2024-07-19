@@ -26,3 +26,32 @@
     background: url('/ravenclaw-room.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+
+.card-box{
+    display: flex;
+    height: 500px;
+    width: 75vw;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.person-card {
+    /* width: 200px; */
+    height: 250px;
+    flex: 1 1 152px;
+    background: rgb(17, 15, 15);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.person-card img{
+    width: 100%;
+    height: 87%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.person-card p {
+    margin: 0;
+    font-weight: bold;
+}
