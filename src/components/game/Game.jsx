@@ -1,8 +1,10 @@
+import './Game.css'
 
-
-function Game() {
+function Game({house}) {
     return (
-        <></>
+        <div className= {`house-card ${house}`}>
+            {console.log(house)}
+        </div>
     )
 }
 

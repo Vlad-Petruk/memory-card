@@ -1,5 +1,13 @@
 
 .main-container{
+    /* margin: 0; */
+    height: 100vh;
+    width: 100vw;
+    background: url('/src/assets/intro-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.logo-box{
     padding-top: 13vh;
 }
 

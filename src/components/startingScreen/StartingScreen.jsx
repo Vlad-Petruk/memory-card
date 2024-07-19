@@ -1,8 +1,18 @@
 import './StartingScreen.css'
-import HouseCard from './HouseCard'
 
-function StartingScreen () {
-    
+function HouseCard({src, handleClick}) {
+    return (
+        <div className="card" onClick={handleClick}>
+            <img src= {src} alt={src} />
+        </div>
+    )
+}
+
+function StartingScreen ({handleClick, handleHouseClick}) {
+    const handleCombinedClick = (house) => {
+        handleClick();
+        handleHouseClick(house);
+      };
 
     return (
         <div className='main-container'>
@@ -16,10 +26,10 @@ function StartingScreen () {
                     <p>Select your Hogwarts house</p>
                 </div>
                 <div className='housecards'>
-                    <HouseCard src= '/gryffindor-button.png'/>
-                    <HouseCard src= '/slytherin-button.png'/>
-                    <HouseCard src= '/hufflepuff-button.png'/>
-                    <HouseCard src= '/ravenclaw-button.png'/>
+                    <HouseCard src= '/gryffindor-button.png' handleClick={() => handleCombinedClick('gryffindor')}/>
+                    <HouseCard src= '/slytherin-button.png'handleClick={() => handleCombinedClick('slytherin')}/>
+                    <HouseCard src= '/hufflepuff-button.png'handleClick={() => handleCombinedClick('hufflepuff')}/>
+                    <HouseCard src= '/ravenclaw-button.png'handleClick={() => handleCombinedClick('ravenclaw')}/>
                 </div>
             </div>
             

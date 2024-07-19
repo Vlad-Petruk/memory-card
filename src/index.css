@@ -28,8 +28,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('/src/assets/intro-background.jpg') no-repeat center center fixed;
-  background-size: cover;
 }
 
 

@@ -1,0 +1,28 @@
+.house-card{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gryffindor {
+    background: url('/gryffindor-room.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.slytherin{
+    background: url('/slytherin-room.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.hufflepuff {
+    background: url('/hufflepuff-roomjpg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.ravenclaw{
+    background: url('/ravenclaw-room.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
