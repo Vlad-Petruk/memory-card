@@ -11,3 +11,29 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+.info-box>:first-child{
+    color: black;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+.housecards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1rem;
+
+}
+
+.card{
+    transition: transform .3s ease-in-out;
+}
+
+.card img{
+    width: 115px;
+}
+
+.card:hover {
+    transform: scale(1.4);
+}
