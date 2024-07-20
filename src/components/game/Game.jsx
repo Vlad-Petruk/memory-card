@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card';
 import './Game.css'
 
@@ -6,7 +6,8 @@ function Game({house}) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [score, setScore] = useState(0)
+    const [bestScore, setBestScore] = useState(0)
 
     useEffect(() => {
         fetch('https://hp-api.onrender.com/api/characters')
@@ -43,8 +44,17 @@ function Game({house}) {
 
 
     return (
-        <div className= {`house-card ${house}`}>
+        <div className= {`main-container-game ${house}`}>
             {console.log(data)}
+            <div className='header'>
+                <div className='small-logo-box'>
+                    <img src="/logo.png" alt="" />
+                </div>
+                <div className='score-box'>
+                    <p>Your score:  {score}</p>
+                    <p>Best score:  {bestScore}</p>
+                </div>
+            </div>
             <div className='card-box'>
                 {data.map((character) => (
                     <Card name={character.name} img={character.img} key={character.id} />
