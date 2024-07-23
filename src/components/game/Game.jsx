@@ -126,7 +126,7 @@ function Game({house}) {
                 {chosenData.map((character) => (
                     <Card name={character.name} img={character.img} key={character.key} handleClick={()=>handleCardClick(character)}/>
                 ))}
-                 {gameCondition && <EndGameModal condition={gameCondition} house={house} handleClick={startNewGame}/>}
+                 {gameCondition && <EndGameModal condition={gameCondition} handleClick={startNewGame}/>}
             </div>
         </div>
     )
