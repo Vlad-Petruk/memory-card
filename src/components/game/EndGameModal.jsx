@@ -1,10 +1,11 @@
 import './Game.css'
 
-function EndGameModal ({condition, house, handleClick}) {
+function EndGameModal ({condition, handleClick}) {
     let message;
     let img;
     if (condition === 'win') {
-        message = `Congratulations! You won the game!10 points to ${house}`;
+        message = `Congratulations! 277 points to Griffindor`;
+        img='win.jpg'
     } else if (condition === 'loss') {
         message = "Game Over! You lost the game.";
         img = '/lose.jpg';
