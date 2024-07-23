@@ -6,7 +6,7 @@ import './Game.css'
 function Game({house}) {
     const [data, setData] = useState(null);
     const [chosenData, setChosenData] = useState([]);
-    const [numCards, setNumCards] = useState(12)
+    const [numCards, setNumCards] = useState(4)
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
@@ -27,6 +27,7 @@ function Game({house}) {
                     key: character.id,
                     name: character.name,
                     img: character.image,
+                    isClicked: false
                 }));
             setData(arrayData);
             setLoading(false);
@@ -37,14 +38,54 @@ function Game({house}) {
         });
     }, []); // Empty dependency array means this effect runs once after the initial render
 
+    const shuffleData = (array) => {
+        const shuffledData = [...array].sort(() => 0.5 - Math.random());
+        return shuffledData
+    }
+
+    useEffect(() => {
+        if (chosenData.length > 0) {
+            shuffleData(chosenData);
+        }
+    }, [chosenData]);
+
     useEffect(() => {
         if (data) {
-            const shuffledData = [...data].sort(() => 0.5 - Math.random());
+            const shuffledData = shuffleData(data)
             const selectedCards = shuffledData.slice(0, numCards);
             setChosenData(selectedCards);
             console.log(selectedCards);
         }
     }, [numCards, data]);
+
+    const levelUp = () => {
+        setNumCards(numCards + 2)
+    }
+
+    const handleWin = () => {
+        console.log('You won')
+    }
+
+    const handleLoss = () => {
+        console.log('You lost')
+    }
+
+    const handleCardClick = (card)=> {
+        if( card.isClicked !== true) {
+            const updatedChosenData = chosenData.map(character =>
+                character.key === card.key ? { ...character, isClicked: true } : character
+            );
+            setScore(score + 1)
+            if(updatedChosenData.every(item => item.isClicked === true)) {
+                if(numCards === 12) {
+                    return handleWin()
+                } else levelUp()
+
+            }
+            setChosenData(shuffleData(updatedChosenData));
+        } else handleLoss()
+        console.log(card.name)
+    }
 
     if (loading) {
         return <div>Loading...</div>;
@@ -67,7 +108,7 @@ function Game({house}) {
             </div>
             <div className='card-box'>
                 {chosenData.map((character) => (
-                    <Card name={character.name} img={character.img} key={character.key} />
+                    <Card name={character.name} img={character.img} key={character.key} handleClick={()=>handleCardClick(character)}/>
                 ))}
             </div>
         </div>
