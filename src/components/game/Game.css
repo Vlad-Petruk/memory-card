@@ -1,7 +1,6 @@
 .main-container-game{
     margin: 0;
-    padding-top: 3vh;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 
     display: flex;
@@ -31,6 +30,8 @@
 }
 
 .header{
+    padding-top: 3vh;
+
     display: flex;
     justify-content: space-between;
     width: 90vw;
@@ -69,7 +70,9 @@
 }
 
 .card-box{
+    padding-top: 2vh;
     display: flex;
+    justify-content: center;
     height: 500px;
     width: 75vw;
     flex-wrap: wrap;
@@ -77,9 +80,9 @@
 }
 
 .person-card {
-    /* width: 200px; */
+    width: 152px;
     height: 230px;
-    flex: 1 1 152px;
+    /* flex: 1 1 152px; */
     background: rgb(17, 15, 15);
     padding: 10px;
     border-radius: 10px;
