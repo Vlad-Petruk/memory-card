@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import Card from './Card';
 import './Game.css'
 
+
 function Game({house}) {
     const [data, setData] = useState(null);
+    const [chosenData, setChosenData] = useState([]);
+    const [numCards, setNumCards] = useState(12)
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
@@ -34,6 +37,15 @@ function Game({house}) {
         });
     }, []); // Empty dependency array means this effect runs once after the initial render
 
+    useEffect(() => {
+        if (data) {
+            const shuffledData = [...data].sort(() => 0.5 - Math.random());
+            const selectedCards = shuffledData.slice(0, numCards);
+            setChosenData(selectedCards);
+            console.log(selectedCards);
+        }
+    }, [numCards, data]);
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -41,11 +53,9 @@ function Game({house}) {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
-
-
+    
     return (
         <div className= {`main-container-game ${house}`}>
-            {console.log(data)}
             <div className='header'>
                 <div className='small-logo-box'>
                     <img src="/logo.png" alt="" />
@@ -56,8 +66,8 @@ function Game({house}) {
                 </div>
             </div>
             <div className='card-box'>
-                {data.map((character) => (
-                    <Card name={character.name} img={character.img} key={character.id} />
+                {chosenData.map((character) => (
+                    <Card name={character.name} img={character.img} key={character.key} />
                 ))}
             </div>
         </div>
