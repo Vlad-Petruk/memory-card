@@ -113,6 +113,8 @@
 }
 
 .end-game-modal {
+    width: 50vw;
+    height: 70vh;
     position: absolute;
 
     background: rgb(17, 15, 15);
@@ -124,6 +126,8 @@
 }
 
 .end-game-modal img {
+    width: 100%;
+    height: 70%;
     object-fit: cover;
     border-radius: 20px;
 
