@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from './Card';
+import EndGameModal from './EndGameModal';
 import './Game.css'
 
 
@@ -10,7 +11,8 @@ function Game({house}) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
-    const [bestScore, setBestScore] = useState(0)
+    const [bestScore, setBestScore] = useState(0);
+    const [gameCondition, setGameCondition] = useState(null);
 
     useEffect(() => {
         fetch('https://hp-api.onrender.com/api/characters')
@@ -64,10 +66,24 @@ function Game({house}) {
 
     const handleWin = () => {
         console.log('You won')
+        setBestScore(score)
+        setGameCondition('win')
     }
 
     const handleLoss = () => {
-        console.log('You lost')
+        console.log('You lost');
+        if (score > bestScore) {
+            setBestScore(score);
+        }
+        startNewGame()
+        setGameCondition('loss')
+    }
+
+    const startNewGame = () => {
+        setNumCards(4);
+        setScore(0);
+        setData(shuffleData(data));
+        setGameCondition(null)
     }
 
     const handleCardClick = (card)=> {
@@ -110,6 +126,7 @@ function Game({house}) {
                 {chosenData.map((character) => (
                     <Card name={character.name} img={character.img} key={character.key} handleClick={()=>handleCardClick(character)}/>
                 ))}
+                 {gameCondition && <EndGameModal condition={gameCondition} house={house} handleClick={startNewGame}/>}
             </div>
         </div>
     )
