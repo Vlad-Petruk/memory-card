@@ -1,10 +1,10 @@
 
 
-function Card({name, img, key}) {
+function Card({name, img}) {
 
 
     return (
-        <div className="person-card" key={key}>
+        <div className="person-card">
             <img src={img} alt={name} />
             <p>{name}</p>
         </div>
