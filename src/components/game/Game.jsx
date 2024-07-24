@@ -6,6 +6,9 @@ import './Game.css'
 // add  music and description of the game??
 // create functionality like initialize pokemon
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+
 function Game({house}) {
     const [data, setData] = useState(null);
     const [chosenData, setChosenData] = useState([]);
@@ -15,7 +18,20 @@ function Game({house}) {
     const [score, setScore] = useState(0)
     const [bestScore, setBestScore] = useState(0);
     const [gameCondition, setGameCondition] = useState(null);
-    const [cardShowing, setCardShowing] = useState(true)
+    const [cardShowing, setCardShowing] = useState(true);
+
+    const initializeCards = async (amount) => {
+        setNumCards(amount);
+    
+        setLoading(true);
+    
+        await sleep(250);
+        setLoading(false);
+        setData(shuffleData(data));
+    
+        await sleep(800);
+        setCardShowing(true);
+      };
 
     useEffect(() => {
         fetch('https://hp-api.onrender.com/api/characters')
@@ -74,14 +90,12 @@ function Game({house}) {
         if (score > bestScore) {
             setBestScore(score);
         }
-        startNewGame()
         setGameCondition('loss')
     }
 
     const startNewGame = () => {
-        setNumCards(4);
+        initializeCards(4);
         setScore(0);
-        setData(shuffleData(data));
         setGameCondition(null)
     }
 
@@ -98,6 +112,8 @@ function Game({house}) {
                     handleWin();
                 } else {
                     setNumCards(numCards + 2);
+                    initializeCards(numCards + 2)
+
                 }
             } else {
                 setCardShowing(false);
