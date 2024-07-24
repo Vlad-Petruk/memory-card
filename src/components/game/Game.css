@@ -38,8 +38,8 @@
 }
 
 .small-logo-box{
-    height: 100px;
-    width: 250px;
+    height: 90px;
+    width: calc(10vw + 50px);
 }
 
 .small-logo-box img{
@@ -47,13 +47,20 @@
     height: 100%;
 }
 
+.game-info{
+    background: rgba(0, 0, 0, 0.7); /* 50% opacity black */
+    border-radius: 20px;
+    padding: 4px 12px;
+}
+
 .game-info p{
     font-size: 25px;
-    margin: 5px;
+    margin: 2px;
 }
 
 .game-info>:first-child{
     font-size: 60px;
+    font-weight: bold;
 }
 
 .score-box{
