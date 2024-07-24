@@ -47,8 +47,18 @@
     height: 100%;
 }
 
+.game-info p{
+    font-size: 25px;
+    margin: 5px;
+}
+
+.game-info>:first-child{
+    font-size: 60px;
+}
+
 .score-box{
     width: 10vw;
+    height: 7vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

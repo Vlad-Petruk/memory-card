@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from './Card';
 import EndGameModal from './EndGameModal';
+import LoadingScreen from '../LoadingScreen';
 import './Game.css'
 
 // add  music and description of the game??
@@ -19,6 +20,7 @@ function Game({house}) {
     const [bestScore, setBestScore] = useState(0);
     const [gameCondition, setGameCondition] = useState(null);
     const [cardShowing, setCardShowing] = useState(true);
+    const [round, setRound] = useState(1)
 
     const initializeCards = async (amount) => {
         setNumCards(amount);
@@ -112,6 +114,7 @@ function Game({house}) {
                     handleWin();
                 } else {
                     setNumCards(numCards + 2);
+                    setRound(round + 1)
                     initializeCards(numCards + 2)
 
                 }
@@ -139,10 +142,16 @@ function Game({house}) {
     }
     
     return (
+        <>
+        {/* {loading&&<LoadingScreen house={house}/>} */}
         <div className= {`main-container-game ${house}`}>
             <div className='header'>
                 <div className='small-logo-box'>
                     <img src="/logo.png" alt="" />
+                </div>
+                <div className='game-info'>
+                    <p>Round {round}</p>
+                    <p>{"Don't click on the same card twice."} </p>
                 </div>
                 <div className='score-box'>
                     <p>Your score:  {score}</p>
@@ -156,6 +165,7 @@ function Game({house}) {
                  {gameCondition && <EndGameModal condition={gameCondition} handleClick={startNewGame}/>}
             </div>
         </div>
+        </>
     )
 }
 
