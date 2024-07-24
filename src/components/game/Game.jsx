@@ -3,6 +3,8 @@ import Card from './Card';
 import EndGameModal from './EndGameModal';
 import './Game.css'
 
+// add  music and description of the game??
+// create functionality like initialize pokemon
 
 function Game({house}) {
     const [data, setData] = useState(null);
@@ -13,6 +15,7 @@ function Game({house}) {
     const [score, setScore] = useState(0)
     const [bestScore, setBestScore] = useState(0);
     const [gameCondition, setGameCondition] = useState(null);
+    const [cardShowing, setCardShowing] = useState(true)
 
     useEffect(() => {
         fetch('https://hp-api.onrender.com/api/characters')
@@ -60,10 +63,6 @@ function Game({house}) {
         }
     }, [numCards, data]);
 
-    const levelUp = () => {
-        setNumCards(numCards + 2)
-    }
-
     const handleWin = () => {
         console.log('You won')
         setBestScore(score)
@@ -86,22 +85,34 @@ function Game({house}) {
         setGameCondition(null)
     }
 
-    const handleCardClick = (card)=> {
-        if( card.isClicked !== true) {
+    async function handleCardClick(card) {
+        if (!card.isClicked) {
             const updatedChosenData = chosenData.map(character =>
                 character.key === card.key ? { ...character, isClicked: true } : character
             );
-            setScore(score + 1)
-            if(updatedChosenData.every(item => item.isClicked === true)) {
-                if(numCards === 12) {
-                    return handleWin()
-                } else levelUp()
-
+    
+            setScore(prevScore => prevScore + 1);
+    
+            if (updatedChosenData.every(item => item.isClicked)) {
+                if (numCards === 12) {
+                    handleWin();
+                } else {
+                    setNumCards(numCards + 2);
+                }
+            } else {
+                setCardShowing(false);
+                setTimeout(() => {
+                    setChosenData(shuffleData(updatedChosenData));
+                    setCardShowing(true);
+                }, 800);
             }
-            setChosenData(shuffleData(updatedChosenData));
-        } else handleLoss()
-        console.log(card.name)
+        } else {
+            handleLoss();
+        }
+    
+        console.log(card.name);
     }
+    
 
     if (loading) {
         return <div>Loading...</div>;
@@ -124,7 +135,7 @@ function Game({house}) {
             </div>
             <div className='card-box'>
                 {chosenData.map((character) => (
-                    <Card name={character.name} img={character.img} key={character.key} handleClick={()=>handleCardClick(character)}/>
+                    <Card name={character.name} img={character.img} key={character.key} handleClick={()=>handleCardClick(character)} cardShowing={cardShowing}/>
                 ))}
                  {gameCondition && <EndGameModal condition={gameCondition} handleClick={startNewGame}/>}
             </div>
