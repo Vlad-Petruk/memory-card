@@ -13,15 +13,31 @@ function App() {
   const [musicPlay, setMusicPlay] = useState(false)
 
   useEffect(() => {
+    const handleEnd = () => {
+        if (musicPlay) {
+            audio.currentTime = 0;
+            audio.play().catch(error => {
+                console.error('Error playing audio:', error);
+            });
+        }
+    };
+
+    audio.addEventListener('ended', handleEnd);
+
     if (musicPlay) {
-      audio.currentTime = 0;
-      audio.play().catch(error => {
-        console.error('Error playing audio:', error);
-      });
+        audio.currentTime = 0;
+        audio.play().catch(error => {
+            console.error('Error playing audio:', error);
+        });
     } else {
-      audio.pause();
+        audio.pause();
     }
-  }, [musicPlay]);
+
+    return () => {
+        audio.removeEventListener('ended', handleEnd);
+    };
+}, [musicPlay]);
+
 
     
   return (
