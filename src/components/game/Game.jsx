@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import Card from './Card';
 import EndGameModal from './EndGameModal';
-import LoadingScreen from '../LoadingScreen';
+import MusicBtn from '../MusicBtn';
+// import LoadingScreen from '../LoadingScreen';
 import './Game.css'
 
-// add  music and description of the game??
-// create functionality like initialize pokemon
+// add  music
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 
-function Game({house}) {
+function Game({house, musicState, musicBtn, gameStatus}) {
     const [data, setData] = useState(null);
     const [chosenData, setChosenData] = useState([]);
     const [numCards, setNumCards] = useState(4)
@@ -21,6 +21,10 @@ function Game({house}) {
     const [gameCondition, setGameCondition] = useState(null);
     const [cardShowing, setCardShowing] = useState(true);
     const [round, setRound] = useState(1)
+
+    useEffect(() => {
+        musicBtn(true);
+      }, []);
 
     const initializeCards = async (amount) => {
         setNumCards(amount);
@@ -165,6 +169,11 @@ function Game({house}) {
                 ))}
                  {gameCondition && <EndGameModal condition={gameCondition} handleClick={startNewGame}/>}
             </div>
+            <div className='exit-game' onClick={()=>gameStatus(false)}>
+                <img src='/exit.png'/>
+            </div>
+            {<MusicBtn musicState={musicState} handleClick={musicBtn}/>}
+            {}
         </div>
         </>
     )
