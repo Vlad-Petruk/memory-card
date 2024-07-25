@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import StartingScreen from "./components/startingScreen/StartingScreen";
 import Game from "./components/game/Game";
@@ -10,16 +10,23 @@ audio.volume = 0.2;
 function App() {
   const [gameOn, setGameOn] = useState(false);
   const [house, setHouse] = useState(null);
+  const [musicPlay, setMusicPlay] = useState(false)
 
-    const playAudio = () => {
+  useEffect(() => {
+    if (musicPlay) {
       audio.currentTime = 0;
-      audio.play();
-    };
+      audio.play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+    } else {
+      audio.pause();
+    }
+  }, [musicPlay]);
 
-    // playAudio();
+    
   return (
     <>
-      {gameOn ? <Game house={house}/> : <StartingScreen handleClick={() => setGameOn(true)} handleHouseClick={(selectedHouse) => setHouse(selectedHouse)} /> }
+      {gameOn ? <Game house={house} musicState ={musicPlay} gameStatus={(bull)=>setGameOn(bull)} musicBtn={(bull)=>setMusicPlay(bull) }/> : <StartingScreen handleClick={() => setGameOn(true)} handleHouseClick={(selectedHouse) => setHouse(selectedHouse)} musicState ={musicPlay} musicBtn={(bull)=>setMusicPlay(bull)} /> }
     </>
   );
 }

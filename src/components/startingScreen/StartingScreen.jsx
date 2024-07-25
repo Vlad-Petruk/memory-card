@@ -1,4 +1,5 @@
 import './StartingScreen.css'
+import MusicBtn from '../MusicBtn';
 
 function HouseCard({src, handleClick}) {
     return (
@@ -8,7 +9,7 @@ function HouseCard({src, handleClick}) {
     )
 }
 
-function StartingScreen ({handleClick, handleHouseClick}) {
+function StartingScreen ({handleClick, handleHouseClick, musicState, musicBtn}) {
     const handleCombinedClick = (house) => {
         handleClick();
         handleHouseClick(house);
@@ -22,7 +23,7 @@ function StartingScreen ({handleClick, handleHouseClick}) {
 
             <div className='housecards-box'>
                 <div className='info-box'>
-                    <p>You are expected to use your memory to help fighting against Voldemort</p>
+                    <p>You are expected to click on cards to help fighting against your Alzheimer</p>
                     <p>Select your Hogwarts house</p>
                 </div>
                 <div className='housecards'>
@@ -32,7 +33,7 @@ function StartingScreen ({handleClick, handleHouseClick}) {
                     <HouseCard src= '/ravenclaw-button.png'handleClick={() => handleCombinedClick('ravenclaw')}/>
                 </div>
             </div>
-            
+            {<MusicBtn musicState={musicState} handleClick={musicBtn}/>}
         </div>
     )
 }
