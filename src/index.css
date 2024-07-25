@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap");
 
 :root {
   font-family: "Metal Mania", system-ui;
@@ -31,6 +31,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-
-

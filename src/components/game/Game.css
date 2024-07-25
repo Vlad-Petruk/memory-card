@@ -1,242 +1,240 @@
-.main-container-game{
-    margin: 0;
-    height: 100%;
-    width: 100%;
+.main-container-game {
+  margin: 0;
+  height: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .gryffindor {
-    background: url('/gryffindor-room.webp') no-repeat center center fixed;
-    background-size: cover;
+  background: url("/gryffindor-room.webp") no-repeat center center fixed;
+  background-size: cover;
 }
 
-.slytherin{
-    background: url('/slytherin-room.webp') no-repeat center center fixed;
-    background-size: cover;
+.slytherin {
+  background: url("/slytherin-room.webp") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .hufflepuff {
-    background: url('/hufflepuff-roomjpg.jpg') no-repeat center center fixed;
-    background-size: cover;
+  background: url("/hufflepuff-roomjpg.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-.ravenclaw{
-    background: url('/ravenclaw-room.jpg') no-repeat center center fixed;
-    background-size: cover;
+.ravenclaw {
+  background: url("/ravenclaw-room.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-.header{
-    padding-top: 3vh;
+.header {
+  padding-top: 3vh;
 
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
 }
 
-.small-logo-box{
-    height: 90px;
-    width: calc(10vw + 50px);
+.small-logo-box {
+  height: 90px;
+  width: calc(10vw + 50px);
 }
 
-.small-logo-box img{
-    width: 100%;
-    height: 100%;
+.small-logo-box img {
+  width: 100%;
+  height: 100%;
 }
 
-.game-info{
-    background: rgba(0, 0, 0, 0.7); /* 50% opacity black */
-    border-radius: 20px;
-    padding: 4px 12px;
+.game-info {
+  background: rgba(0, 0, 0, 0.7); /* 50% opacity black */
+  border-radius: 20px;
+  padding: 4px 12px;
 }
 
-.game-info p{
-    font-size: 25px;
-    margin: 2px;
+.game-info p {
+  font-size: 25px;
+  margin: 2px;
 }
 
-.game-info>:first-child{
-    font-size: 60px;
-    font-weight: bold;
+.game-info > :first-child {
+  font-size: 60px;
+  font-weight: bold;
 }
 
-.score-box{
-    width: 10vw;
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.score-box {
+  width: 10vw;
+  height: 7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    background: rgb(17, 15, 15);
-    padding: 25px;
+  background: rgb(17, 15, 15);
+  padding: 25px;
 
-    /* border: 1px solid white; */
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(248, 235, 235, 0.7); /* Light white shadow */
-    transition: box-shadow 0.3s ease; /* Smooth transition effect */
+  /* border: 1px solid white; */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(248, 235, 235, 0.7); /* Light white shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition effect */
 
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .score-box p {
-    margin: 0;
-    font-weight: bold;
+  margin: 0;
+  font-weight: bold;
 }
 
-.card-box{
-    padding-top: 2vh;
-    display: flex;
-    justify-content: center;
-    height: 500px;
-    width: 75vw;
-    flex-wrap: wrap;
-    gap: 10px;
+.card-box {
+  padding-top: 2vh;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 75vw;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .person-card {
-    position: relative;
-    width: 172px;
-    height: 250px;
-    background: rgb(17, 15, 15);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-    transition: transform 0.85s;
-    animation: flip-card 0.85s;
-    transform-style: preserve-3d;
+  position: relative;
+  width: 172px;
+  height: 250px;
+  background: rgb(17, 15, 15);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  transition: transform 0.85s;
+  animation: flip-card 0.85s;
+  transform-style: preserve-3d;
 }
 
-.card-front{
-    width: 152px;
-    height: 230px;
-    top: 10px;
-    left: 10px;
+.card-front {
+  width: 152px;
+  height: 230px;
+  top: 10px;
+  left: 10px;
 }
 
 .card-front,
-.card-back{
-    backface-visibility: hidden;
-    position: absolute;
+.card-back {
+  backface-visibility: hidden;
+  position: absolute;
 }
 
 .card-back {
-    width: 172px;
-    height: 250px;
-    top: 0;
-    left: 0;
-    transform: rotateY(180deg);
-
+  width: 172px;
+  height: 250px;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
 }
 
-.card-front img{
-    width: 100%;
-    height: 87%;
-    object-fit: cover;
-    border-radius: 10px;
+.card-front img {
+  width: 100%;
+  height: 87%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .person-card p {
-    margin: 0;
-    /* font-weight: bold; */
-    font-size: 19px;
+  margin: 0;
+  /* font-weight: bold; */
+  font-size: 19px;
 }
 
-.tilt-card{
-    height: 230px;
+.tilt-card {
+  height: 230px;
 }
 
-.tilt-card.hide .person-card{
-    transform: rotateY(180deg);
+.tilt-card.hide .person-card {
+  transform: rotateY(180deg);
 }
 
 .dark-bg {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 50% opacity black */
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 50% opacity black */
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .end-game-modal {
-    width: 50vw;
-    height: 70vh;
-    position: absolute;
+  width: 50vw;
+  height: 70vh;
+  position: absolute;
 
-    background: rgb(17, 15, 15);
-    border-radius: 20px;
-    z-index: 2;
-    top: 70px;
-    font-size: 30px;
-    padding: 30px;
+  background: rgb(17, 15, 15);
+  border-radius: 20px;
+  z-index: 2;
+  top: 70px;
+  font-size: 30px;
+  padding: 30px;
 }
 
 .end-game-modal img {
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-    border-radius: 20px;
-
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .end-game-modal button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .end-game-modal p {
-    margin: 5px;
+  margin: 5px;
 }
 
 .end-game-modal button {
-    font-size: 30px;
-    font-weight: bold;
-    font-family: "Metal Mania", system-ui;
-    border-radius: 20px;
-    padding: 20px;
-    background: black;
-    border: none;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7);
-    transition: transform 0.3s ease-in-out;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Metal Mania", system-ui;
+  border-radius: 20px;
+  padding: 20px;
+  background: black;
+  border: none;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7);
+  transition: transform 0.3s ease-in-out;
 }
 
 @keyframes flip-card {
-    from {
-      transform: rotateY(180deg);
-      pointer-events: none;
-    }
-    to {
-      transform: rotateY(0deg);
-    }
+  from {
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
+  to {
+    transform: rotateY(0deg);
+  }
 }
 
 .exit-game {
-    position: absolute;
-    bottom: 30px;
-    left: 5vw;
-    width: 3vw;
-    height: 3vw;
-    background: rgb(193, 186, 186);
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(248, 235, 235, 0.4); /* Light white shadow */
-    transition: transform 0.3s ease;
-} 
-
-.exit-game img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  position: absolute;
+  bottom: 30px;
+  left: 5vw;
+  width: 3vw;
+  height: 3vw;
+  background: rgb(193, 186, 186);
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(248, 235, 235, 0.4); /* Light white shadow */
+  transition: transform 0.3s ease;
 }
 
-.exit-game:hover{
-    transform: scale(1.1);
+.exit-game img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exit-game:hover {
+  transform: scale(1.1);
 }
