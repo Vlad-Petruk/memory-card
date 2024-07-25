@@ -98,7 +98,8 @@ function Game({house}) {
     const startNewGame = () => {
         initializeCards(4);
         setScore(0);
-        setGameCondition(null)
+        setGameCondition(null);
+        setRound(1)
     }
 
     async function handleCardClick(card) {
