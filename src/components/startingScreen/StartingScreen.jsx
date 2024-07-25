@@ -23,7 +23,7 @@ function StartingScreen ({handleClick, handleHouseClick, musicState, musicBtn}) 
 
             <div className='housecards-box'>
                 <div className='info-box'>
-                    <p>You are expected to click on cards to help fighting against your Alzheimer</p>
+                <p>Test your memory skills by clicking on the cards! See how well you can remember and improve your score with each level</p>
                     <p>Select your Hogwarts house</p>
                 </div>
                 <div className='housecards'>
