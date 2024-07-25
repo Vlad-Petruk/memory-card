@@ -145,20 +145,10 @@
     border-radius: 10px;
 }
 
-/* .show {
-    display: block;
-    transform: rotateY(0deg);
-    /* z-index: 2; */
-/* } */
-
-/* .hide {
-    display: none;
-    transform: rotateY(180deg); */
-/* } */
-
 .person-card p {
     margin: 0;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 19px;
 }
 
 .tilt-card{

@@ -11,17 +11,28 @@
     padding-top: 13vh;
 }
 
+.housecards-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .info-box {
     font-weight: bold;
     font-size: 1.5rem;
+    width: 50vw;
 }
 
 .info-box>:first-child{
     color: black;
     margin-top: -1rem;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
+    margin-bottom: .1rem;
+    font-size: 1.4rem;
+}
 
+.info-box p {
+    margin-top: 0;
 }
 
 .housecards {
